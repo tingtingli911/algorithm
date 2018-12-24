@@ -2,10 +2,10 @@ package sort;
 
 public class SortCompare {
     public static void main(String[] args) {
-        int n = 50000;
+        int n = 5000;
         int[] numberToSort = getRandomNums(n);
         long start = System.nanoTime();
-        numberToSort = insertSort(numberToSort, n);
+        numberToSort = bubbleSort(numberToSort, n);
         long end = System.nanoTime();
         System.out.println("sort time: " + (end - start)/1000/1000 + "ms");
         logArray(numberToSort, n);
@@ -27,14 +27,13 @@ public class SortCompare {
         if (n <= 1) {
             return datas;
         }
-        /* 提前退出标志位 */
-        boolean flag = false;
-        for (int i = 0; i < n; ++i) {
-            for (int j = 0; j < n - i - 1; ++j) {
+        for (int i=0; i<n; ++i) {
+            boolean flag = false;
+            for (int j=0; j<n-i-1; ++j) {
                 if (datas[j] > datas[j+1]) {
-                    int tmp = datas[j];
+                    int temp = datas[j];
                     datas[j] = datas[j+1];
-                    datas[j+1] = tmp;
+                    datas[j+1] = temp;
                     flag = true;
                 }
             }
@@ -44,6 +43,7 @@ public class SortCompare {
         }
         return datas;
     }
+
 
     /* 插入排序 */
     public static int[] insertSort(int[] datas, int n) {
