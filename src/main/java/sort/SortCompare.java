@@ -3,12 +3,26 @@ package sort;
 public class SortCompare {
     public static void main(String[] args) {
         int n = 50000;
-        int[] numberToSort = getRandomNums(n);
-        long start = System.nanoTime();
-        numberToSort = insertSort(numberToSort, n);
-        long end = System.nanoTime();
-        System.out.println("sort time: " + (end - start)/1000/1000 + "ms");
+        int[] numberToSort;
+        long start;
+        long end;
+
+        // test bubble sort
+        numberToSort = getRandomNums(n);
+        start = System.nanoTime();
+        numberToSort = bubbleSort(numberToSort, n);
+        end = System.nanoTime();
+        System.out.println("bubble sort time: " + (end - start)/1000/1000 + "ms");
         logArray(numberToSort, n);
+
+        // test insertion sort
+        numberToSort = getRandomNums(n);
+        start = System.nanoTime();
+        numberToSort = insertSort(numberToSort, n);
+        end = System.nanoTime();
+        System.out.println("insertion sort time: " + (end - start)/1000/1000 + "ms");
+        logArray(numberToSort, n);
+
     }
 
     /* 获取指定位数的随机数组 */
